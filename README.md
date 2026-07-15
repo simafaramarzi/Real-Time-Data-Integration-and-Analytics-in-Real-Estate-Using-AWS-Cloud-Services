@@ -1,67 +1,38 @@
-# Wonderland Property Group (WPG) Cloud-Based Data Pipeline
+# Wonderland Property Group — Cloud Data Pipeline Architecture
 
-This document details the design and implementation of a **cloud-based data pipeline** for **Wonderland Property Group (WPG)**, a real estate company dealing with diverse and scattered data.  
-The project aims to build a **scalable and intelligent system on AWS** capable of handling real-time data and supporting predictive analytics using machine learning models.
+An AWS cloud architecture design for a real estate company (Wonderland Property Group) handling scattered, multi-source data — covering data ingestion, storage, real-time analytics, machine learning, and security.
 
----
+> **Note:** This is an architecture and system design document (see the full PDF report), not a deployed or coded implementation. It demonstrates the ability to design a cloud data platform from requirements to component selection.
 
-##  Project Scope and Objectives
+## Objectives
 
-As a cloud data analyst, the goal was to create a system that can:
+The design addresses five goals:
+1. **Data Integration** — collect structured, semi-structured, and unstructured data from IoT smart-home sensors, real estate transactions, customer behavior, and external research
+2. **Security & Compliance** — GDPR and CCPA-compliant data storage
+3. **Real-Time Analytics** — rapid analysis of live transactions and sensor data
+4. **Predictive Modeling** — ML-based property valuation, customer classification, and recommendations
+5. **Business Intelligence** — interactive dashboards for stakeholders
 
-1. **Collect and Integrate Data**  
-   - Gather structured, semi-structured, and unstructured data.  
-   - Sources include smart homes (IoT), real estate transactions, customer behavior, and external research.
+## Architecture
 
-2. **Ensure Data Security and Compliance**  
-   - Store data securely while adhering to **GDPR** and **CCPA** regulations.
+| Layer | AWS Services |
+|---|---|
+| **Ingestion** | Amazon AppFlow, AWS DMS, AWS IoT Core, Amazon Kinesis |
+| **Storage & Processing** | Amazon S3 (Raw / Processed / Analytics zones), AWS Glue (ETL), Amazon Lake Formation |
+| **Analytics** | Amazon Athena (SQL queries), Amazon Redshift (data warehouse), Amazon SageMaker (ML) |
+| **Security** | IAM, AWS KMS (encryption), Amazon GuardDuty (threat detection) |
 
-3. **Enable Real-Time Analytics**  
-   - Perform rapid analysis on instant transactions and sensor data.
+## Projected Outcomes
 
-4. **Develop Predictive Models**  
-   - Use **AI/ML** to predict property values, classify customers, and provide personalized recommendations.
+- 25–30% cost reduction vs. an on-premise setup
+- Scalable, GDPR/CCPA-compliant cloud infrastructure
 
-5. **Support Business Intelligence**  
-   - Provide interactive reports and dashboards for managers and stakeholders.
+## Future Work
 
----
+- Strengthen real-time monitoring
+- Enhance security measures
+- Integrate additional data sources
 
-##  Technical Architecture and Implementation
+## Full Report
 
-The solution is built on **AWS Cloud Infrastructure** with a layered data management approach.  
-
-### 1. Data Ingestion
-- Tools used: **Amazon AppFlow**, **AWS DMS**, **AWS IoT Core**, **Amazon Kinesis**  
-- Collects data from various internal and external sources.
-
-### 2. Storage and Processing
-- **Data Lake on Amazon S3** with three zones:
-  - Raw
-  - Processed
-  - Analytics
-- **AWS Glue** for ETL operations.  
-- **Amazon Lake Formation** for access control.
-
-### 3. Analytics Layer
-- **Amazon Athena**: Quick SQL queries on S3 data.  
-- **Amazon Redshift**: Data warehouse for complex analysis.  
-- **Amazon SageMaker**: Build and deploy machine learning models.
-
-### 4. Security Layer
-- **IAM**: Access management  
-- **AWS KMS**: Encryption  
-- **Amazon GuardDuty**: Threat detection
-
-> Implementation includes Python scripts for IoT data simulation and Kinesis Firehose configuration, as well as a CloudFormation YAML template for automated resource deployment.
-
----
-
-## Outcomes and Future Suggestions
-
-- **Cost Reduction**: 25-30% compared to an on-premise setup.  
-- **Scalable & Secure**: Provides a compliant cloud solution for WPG.  
-- **Future Improvements**:
-  - Strengthen real-time monitoring.  
-  - Enhance security measures.  
-  - Integrate additional data sources and resources.
+See [Real-Time Data Integration and Analytics in Real Estate Using AWS Cloud Services.pdf](<Real-Time Data Integration and Analytics in Real Estate Using AWS Cloud Services.pdf>) for the complete design document.
