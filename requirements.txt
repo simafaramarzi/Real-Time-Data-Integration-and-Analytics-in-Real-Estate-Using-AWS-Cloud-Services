@@ -1,0 +1,2 @@
+# This project is an architecture/design document — no executable
+# implementation code is included, so there are no Python dependencies.
